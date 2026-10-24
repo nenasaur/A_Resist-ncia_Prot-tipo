@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] GameObject Player, interactText, pauseMenu;
+    [SerializeField] GameObject Player, interactText, pauseMenu, settingsMenu;
     private bool pause;
+
 
 
     // Start is called before the first frame update
@@ -44,7 +45,15 @@ public class GameController : MonoBehaviour
 
     public void options()
     {
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(true);
         Debug.Log("abrindoOpções");
+    }
+     public void BackPause()
+    {
+        pauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
+        Debug.Log("Back to menu");
     }
     
     public void Continue()
@@ -57,7 +66,7 @@ public class GameController : MonoBehaviour
    
    public void ReturnMenu()
    {
-    Debug.Log("retornando ao menu");
+    SceneManager.LoadScene("menu");
    }
 
    public void seeDocuments(){

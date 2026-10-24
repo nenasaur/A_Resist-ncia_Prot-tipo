@@ -10,7 +10,7 @@ public class movementPlayer : MonoBehaviour
     [SerializeField] GameObject interactText;
     
     private Rigidbody2D rb;
-    private bool running, hide, interact;
+    private bool running, hide, agachado, interact;
     private float horizontalMove;
      private SpriteRenderer spriteRenderer;
 
@@ -25,6 +25,7 @@ public class movementPlayer : MonoBehaviour
         running = false;
         hide = false;
         interact = false;
+        agachado = false;
         
         // Congela a rotação para o player não capotar nas colisões
         rb.freezeRotation = true;
@@ -53,9 +54,16 @@ public class movementPlayer : MonoBehaviour
         }
                
         // Captura o clique do agachamento
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
+            agachado = true;
+            anim.SetBool("agachado", true);
             Debug.Log("agachando");
+        }
+        else
+        {
+            agachado = false;
+            anim.SetBool("agachado", false);
         }
         if(Input.GetKey(KeyCode.F))
        {
